@@ -2,4 +2,4 @@
 
 # Working on it to improve.
 
-# stay connect with me fir updates.
+# stay connect with me for updates.
