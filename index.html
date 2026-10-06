@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Anas!</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    color: #FFD700;
+    overflow: hidden;
+  }
+  .countdown, .card {
+    position: absolute;
+    text-align: center;
+    transition: opacity 1s;
+  }
+  .countdown {
+    font-size: 8em;
+    font-weight: bold;
+    text-shadow: 0 0 30px #FFD700;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0%,100% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+  }
+  .card {
+    background: rgba(255,215,0,0.1);
+    border: 2px solid #FFD700;
+    padding: 60px 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(255,215,0,0.3);
+    opacity: 0;
+  }
+  h1 { font-size: 3em; letter-spacing: 3px; }
+  h2 { font-size: 2.2em; margin: 15px 0; color: #fff; }
+  p { font-size: 1.3em; margin-top: 20px; color: #eee; }
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFD700;
+    animation: fall 4s linear infinite;
+  }
+  @keyframes fall {
+    to {transform: translateY(100vh) rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+  <!-- 3 Second Countdown -->
+  <div class="countdown" id="count">3</div>
+
+  <!-- Main Birthday Card -->
+  <div class="card" id="card">
+    <h1>👑 HAPPY BIRTHDAY 👑</h1>
+    <h2>SHEIKH MOHAMMED ANAS HOSSAIN</h2>
+    <p>May your life be as Royal as Old Money 💰✨</p>
+    <p>Wishing you Success, Wealth & Happiness 🥂</p>
+  </div>
+
+  <!-- Old Money Birthday Music -->
+  <audio id="music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_d1716f8a1e.mp3" type="audio/mp3">
+  </audio>
+
+<script>
+  let count = 3;
+  const countEl = document.getElementById('count');
+  const cardEl = document.getElementById('card');
+  const music = document.getElementById('music');
+
+  const timer = setInterval(() => {
+    count--;
+    countEl.innerText = count;
+    if(count <= 0) {
+      clearInterval(timer);
+      countEl.style.opacity = 0;
+      cardEl.style.opacity = 1;
+      music.play(); // Music starts after countdown
+      
+      // Confetti
+      for(let i=0; i<50; i++){
+        let c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random()*100 + '%';
+        c.style.background = `hsl(${Math.random()*60 + 40}, 100%, 50%)`;
+        c.style.animationDelay = Math.random()*2 + 's';
+        document.body.appendChild(c);
+      }
+    }
+  }, 1000);
+</script>
+</body>
+  </html>
